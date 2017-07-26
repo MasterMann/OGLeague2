@@ -2,12 +2,12 @@
 #define SCRIPTMANAGER_H
 
 class World;
-class ScriptManager
+class DataManager
 {
 private:
     World *pWorld;
 public:
-    ScriptManager(World *world);
+    DataManager(World *world);
 };
 
 #endif // SCRIPTMANAGER_H

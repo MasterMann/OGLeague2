@@ -7,7 +7,7 @@
 #include "scripts/scriptmap.h"
 #include "common/gameinfo.hpp"
 #include "timemanager.h"
-#include "navigationmanager.h"
+#include "map.h"
 #include "world.h"
 
 using namespace std;
@@ -20,7 +20,7 @@ Game::Game()
 
 void Game::LoadWorld()
 {
-    pWorld->navigationmanager->init();
+    pWorld->map->init();
     r3dFile dsc("LEVELS/"+pWorld->gameinfo->getMapName()+"/Scene/room.dsc");
     std::string name, quality;
     while(dsc >> name >> quality)

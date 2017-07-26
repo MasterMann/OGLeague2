@@ -4,13 +4,13 @@
 #include "r3d.hpp"
 
 class World;
-class NavigationManager
+class Map
 {
 private:
     r3dNavGrid mGrid;
     World* pWorld;
 public:
-    NavigationManager(World *world);
+    Map(World *world);
     void init();
 };
 

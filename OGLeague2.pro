@@ -20,13 +20,9 @@ SOURCES += \
     playermanager.cpp \
     game.cpp \
     world.cpp \
-    locationsmanager.cpp \
-    visibilitymanager.cpp \
-    spellmanager.cpp \
-    scriptmanager.cpp \
-    itemmanager.cpp \
-    navigationmanager.cpp \
-    timemanager.cpp
+    timemanager.cpp \
+    map.cpp \
+    datamanager.cpp
 
 HEADERS += \
     netserver.h \
@@ -34,13 +30,9 @@ HEADERS += \
     playermanager.h \
     game.h \
     world.h \
-    locationsmanager.h \
-    visibilitymanager.h \
-    spellmanager.h \
-    scriptmanager.h \
-    itemmanager.h \
-    navigationmanager.h \
-    timemanager.h
+    timemanager.h \
+    map.h \
+    datamanager.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

@@ -1,14 +1,14 @@
-#include "navigationmanager.h"
+#include "map.h"
 #include "world.h"
 #include "common/gameinfo.hpp"
 
-NavigationManager::NavigationManager(World *world)
+Map::Map(World *world)
     :pWorld(world)
 {
 
 }
 
-void NavigationManager::init()
+void Map::init()
 {
     mGrid.load("LEVELS/"+pWorld->gameinfo->getMapName()+"/AIPath.aimesh_ngrid");
 }
