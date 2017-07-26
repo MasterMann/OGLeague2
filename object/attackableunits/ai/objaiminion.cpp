@@ -1,17 +1,6 @@
 #include "objaiminion.h"
 #include "stats/replicationhelper.h"
 
-namespace
-{
-    uint32_t REP_FLAGS = 0;
-    CReplInfo32 npc_ClientSpecific;
-    CReplInfo32 npc_LocalRepData1;
-    CReplInfo32 npc_LocalRepData2;
-    CReplInfo32 npc_MapRepData;
-    CReplInfo32 npc_OnVisibleRepData;
-}
-
-
 ObjAiMinion::ObjAiMinion(World *world) : ObjAiBase(world)
 {
     mReplicationManager.mBase = this;
@@ -20,31 +9,11 @@ ObjAiMinion::ObjAiMinion(World *world) : ObjAiBase(world)
 
 void ObjAiMinion::SetupReplicationInfo()
 {
-    if ( !(REP_FLAGS & CLIENT_ONLY_REP_DATA) )
-    {
-        REP_FLAGS = REP_FLAGS | CLIENT_ONLY_REP_DATA;
-        npc_ClientSpecific.numVars = 0;
-    }
-    if ( !(REP_FLAGS & LOCAL_REP_DATA1) )
-    {
-        REP_FLAGS |= LOCAL_REP_DATA1;
-        npc_LocalRepData1.numVars = 0;
-    }
-    if ( !(REP_FLAGS & LOCAL_REP_DATA2) )
-    {
-        REP_FLAGS |= LOCAL_REP_DATA2;
-        npc_LocalRepData2.numVars = 0;
-    }
-    if ( !(REP_FLAGS & MAP_REPDATA) )
-    {
-        REP_FLAGS |= MAP_REPDATA;
-        npc_MapRepData.numVars = 0;
-    }
-    if ( !(REP_FLAGS & ONVISIBLE_REP_DATA) )
-    {
-        REP_FLAGS = REP_FLAGS | ONVISIBLE_REP_DATA;
-        npc_OnVisibleRepData.numVars = 0;
-    }
+    static CReplInfo32 npc_ClientSpecific;
+    static CReplInfo32 npc_LocalRepData1;
+    static CReplInfo32 npc_LocalRepData2;
+    static CReplInfo32 npc_MapRepData;
+    static CReplInfo32 npc_OnVisibleRepData;
     mHealth.mCurrent.SetReplicator("mHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
     mPAR.mCurrent.SetReplicator("mMP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);
     mHealth.mMax.SetReplicator("mMaxHP", &npc_LocalRepData1, LOCAL_REP_DATA1, &mReplicationManager);

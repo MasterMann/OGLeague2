@@ -1,9 +1,7 @@
 #ifndef OBJBARRACKSDAMPENER_H
 #define OBJBARRACKSDAMPENER_H
 
-#include "object/attackableunits/building/animated/objanimatedbuilding.h"
 #include "objanimatedbuilding.h"
-#include "stats/replicationhelper.h"
 
 class ObjBarracksDampener : public ObjAnimatedBuilding
 {
