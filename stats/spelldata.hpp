@@ -124,8 +124,9 @@ struct SpellData
         {
             for(int c = 0; c < 5; c++)
             {
-                mEffectAmount[i][c] = conf.getNum("SpellData",
-                                                  "Effect"+to_string(i+1)+"Level"+to_string(c)+"Amount", 0.0f);
+                mEffectAmount[i][c]
+                        = conf.getNum("SpellData",
+                                      "Effect"+to_string(i+1)+"Level"+to_string(c)+"Amount", 0.0f);
             }
         }
         mCoefficient = conf.getNum("SpellData", "Coefficient", 0.0f);
@@ -165,8 +166,10 @@ struct SpellData
         MissileMinSpeed = conf.getNum("SpellData", "MissileMinSpeed", MissileSpeed);
         mMissileEffectName = conf.getString("SpellData", "MissileEffect", "");
         mMissileBoneName = conf.getString("SpellData", "MissileBoneName", "R_Hand");
-        mMissilePerceptionBubbleRadius = conf.getNum("SpellData", "MissilePerceptionBubbleRadius", 0.0f);
-        mMissilePerceptionBubbleRevealsStealth = conf.getNum("SpellData","MissilePerceptionBubbleRevealsStealth", 0) != 0;
+        mMissilePerceptionBubbleRadius
+                = conf.getNum("SpellData", "MissilePerceptionBubbleRadius", 0.0f);
+        mMissilePerceptionBubbleRevealsStealth
+                = conf.getNum("SpellData","MissilePerceptionBubbleRevealsStealth", 0) != 0;
 
         bHaveHitEffect = conf.getNum("SpellData", "HaveHitEffect", 0);
         bHaveHitBone = conf.getNum("SpellData", "HaveHitBone", 0);
@@ -182,11 +185,13 @@ struct SpellData
         mPointEffectName = conf.getString("SpellData", "PointEffectName", "");
         DelayCastOffsetPercent = conf.getNum("SpellData", "DelayCastOffsetPercent", 0.0f);
         DelayTotalTimePercent = conf.getNum("SpellData", "DelayTotalTimePercent", 0.0f);
-        CastTargetAdditionalUnitsRadius = conf.getNum("SpellData", "CastTargetAdditionalUnitsRadius", 0.0f);
+        CastTargetAdditionalUnitsRadius
+                = conf.getNum("SpellData", "CastTargetAdditionalUnitsRadius", 0.0f);
 
         mLineWidth = conf.getNum("SpellData", "LineWidth", 0.0f);
         bLineMissileBounces = conf.getNum("SpellData", "LineMissileBounces", 0);
-        mLineMissileEndsAtTargetPoint = conf.getNum("SpellData", "LineMissileEndsAtTargetPoint", 0) != 0;
+        mLineMissileEndsAtTargetPoint
+                = conf.getNum("SpellData", "LineMissileEndsAtTargetPoint", 0) != 0;
         mCantCancelWhileWindingUp = conf.getNum("SpellData", "CantCancelWhileWindingUp", 0) != 0;
         mCantCancelWhileChanneling = conf.getNum("SpellData", "CantCancelWhileChanneling", 0) != 0;
         mApplyAttackDamage = conf.getNum("SpellData", "ApplyAttackDamage", 0) != 0;
@@ -196,11 +201,16 @@ struct SpellData
         canOnlyCastWhileDead = conf.getNum("SpellData", "CanOnlyCastWhileDead", 0) != 0;
         mStartCooldown = conf.getNum("SpellData", "StartCooldown", 0.0f);
         MissileGravity = conf.getNum("SpellData", "MissileGravity", 0.0f) * 100.0f;
-        LineMissileDelayDestroyAtEndSeconds = conf.getNum("SpellData", "LineMissileDelayDestroyAtEndSeconds", 0.0f);
-        LineMissileTimePulseBetweenCollisionSpellHits = conf.getNum("SpellData", "LineMissileTimePulseBetweenCollisionSpellHits", 0.0f);
-        LuaOnMissileUpdateDistanceInterval = conf.getNum("SpellData", "LuaOnMissileUpdateDistanceInterval", 0.0f);
-        mMissileTargetHeightAugment = conf.getNum("SpellData", "MissileTargetHeightAugment", 100.0f);
-        mLineMissileTargetHeightAugment = conf.getNum("SpellData", "LineMissileTargetHeightAugment", 0.0f);
+        LineMissileDelayDestroyAtEndSeconds
+                = conf.getNum("SpellData", "LineMissileDelayDestroyAtEndSeconds", 0.0f);
+        LineMissileTimePulseBetweenCollisionSpellHits
+                = conf.getNum("SpellData", "LineMissileTimePulseBetweenCollisionSpellHits", 0.0f);
+        LuaOnMissileUpdateDistanceInterval
+                = conf.getNum("SpellData", "LuaOnMissileUpdateDistanceInterval", 0.0f);
+        mMissileTargetHeightAugment
+                = conf.getNum("SpellData", "MissileTargetHeightAugment", 100.0f);
+        mLineMissileTargetHeightAugment
+                = conf.getNum("SpellData", "LineMissileTargetHeightAugment", 0.0f);
         BounceRadius = conf.getNum("SpellData", "BounceRadius", 450.0f);
 
         cantCastWhileRooted = conf.getNum("SpellData", "CantCastWhileRooted", 0) != 0;
@@ -208,17 +218,23 @@ struct SpellData
         mDeathRecapPriority = conf.getNum("SpellData", "DeathRecapPriority", 0);
         LockConeToPlayer = conf.getNum("SpellData", "LockConeToPlayer", 0) != 0;
         mOverrideForceSpellCancel = conf.getNum("SpellData", "OverrideForceSpellCancel", 0) != 0;
-        mOverrideForceSpellAnimation = conf.getNum("SpellData", "OverrideForceSpellAnimation", 0) != 0;
-        mLineMissileCollisionFromStartPoint = conf.getNum("SpellData", "LineMissileCollisionFromStartPoint", 0) != 0;
+        mOverrideForceSpellAnimation
+                = conf.getNum("SpellData", "OverrideForceSpellAnimation", 0) != 0;
+        mLineMissileCollisionFromStartPoint
+                = conf.getNum("SpellData", "LineMissileCollisionFromStartPoint", 0) != 0;
         mLineMissileTrackUnits = conf.getNum("SpellData", "LineMissileTrackUnits", 0) != 0;
-        mLocationTargettingTypeInfo.mWidth[0] = conf.getNum("SpellData", "LocationTargettingWidth1", -1.0f);
+        mLocationTargettingTypeInfo.mWidth[0]
+                = conf.getNum("SpellData", "LocationTargettingWidth1", -1.0f);
 
         for(int i = 1; i<7; i++)
         {
-            mLocationTargettingTypeInfo.mWidth[i] = conf.getNum("SpellData", "LocationTargettingWidth"+to_string(i), 0.0f);
-            mLocationTargettingTypeInfo.mLength[i] = conf.getNum("SpellData", "LocationTargettingLength"+to_string(i), 0.0f);
+            mLocationTargettingTypeInfo.mWidth[i]
+                    = conf.getNum("SpellData", "LocationTargettingWidth"+to_string(i), 0.0f);
+            mLocationTargettingTypeInfo.mLength[i]
+                    = conf.getNum("SpellData", "LocationTargettingLength"+to_string(i), 0.0f);
         }
-        mParticleStartOffset = conf.getArray<float,3>("SpellData", "ParticleStartOffset", {0, 0, 0});
+        mParticleStartOffset
+                = conf.getArray<float,3>("SpellData", "ParticleStartOffset", {0, 0, 0});
         mSpellRevealsChampion = conf.getNum("SpellData", "SpellRevealsChampion", 1) != 0;
         string prefrence = conf.getString("SpellData", "SelectionPreference", "none");
         if(prefrence == "friend")

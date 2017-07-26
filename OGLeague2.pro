@@ -12,27 +12,21 @@ include(stats/stats.pri)
 include(object/object.pri)
 include(scripts/scripts.pri)
 include(packets/packets.pri)
+include(data/data.pri)
+include(map/map.pri)
 
 SOURCES += \
     main.cpp \
-    netserver.cpp \
-    objectmanager.cpp \
     playermanager.cpp \
     game.cpp \
     world.cpp \
-    timemanager.cpp \
-    map.cpp \
-    datamanager.cpp
+    timemanager.cpp
 
 HEADERS += \
-    netserver.h \
-    objectmanager.h \
     playermanager.h \
     game.h \
     world.h \
-    timemanager.h \
-    map.h \
-    datamanager.h
+    timemanager.h
 
 win32 {
     LIBS += -lws2_32 -lwinmm

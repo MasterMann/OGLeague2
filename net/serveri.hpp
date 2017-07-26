@@ -31,6 +31,7 @@ public:
     virtual void eachClient(std::function<void(uint32_t, ServerI*)> each)
     {
     }
+
     template<class PKT>
     bool sendPacket(uint32_t cid, PKT &pkt)
     {

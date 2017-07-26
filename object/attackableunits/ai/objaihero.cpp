@@ -1,10 +1,7 @@
 #include "objaihero.h"
 #include "stats/replicationhelper.h"
-#include "world.h"
-#include "objectmanager.h"
 
-ObjAiHero::ObjAiHero(World *world)
-    : ObjAiBase(world)
+ObjAiHero::ObjAiHero(World *world) : ObjAiBase(world)
 {
     mReplicationManager.mBase = this;
     SetupReplicationInfo();
@@ -43,27 +40,42 @@ void ObjAiHero::SetupReplicationInfo()
         REP_FLAGS = REP_FLAGS | ONVISIBLE_REP_DATA;
         npc_OnVisibleRepData.numVars = 0;
     }
-    mExp.mExp.SetReplicator("mExp", &npc_ClientSpecific, CLIENT_ONLY_REP_DATA, &mReplicationManager);
-    mGold.mValue.SetReplicator("mGold", &npc_ClientSpecific, CLIENT_ONLY_REP_DATA, &mReplicationManager);
-    mCanCastBits1.SetReplicator("mCanCastBits1", &npc_ClientSpecific, CLIENT_ONLY_REP_DATA, &mReplicationManager);
-    mCanCastBits2.SetReplicator("mCanCastBits2", &npc_ClientSpecific, CLIENT_ONLY_REP_DATA, &mReplicationManager);
+    mExp.mExp.SetReplicator("mExp", &npc_ClientSpecific, CLIENT_ONLY_REP_DATA,
+                            &mReplicationManager);
+    mGold.mValue.SetReplicator("mGold", &npc_ClientSpecific,
+                               CLIENT_ONLY_REP_DATA, &mReplicationManager);
+    mCanCastBits1.SetReplicator("mCanCastBits1", &npc_ClientSpecific,
+                                CLIENT_ONLY_REP_DATA, &mReplicationManager);
+    mCanCastBits2.SetReplicator("mCanCastBits2", &npc_ClientSpecific,
+                                CLIENT_ONLY_REP_DATA, &mReplicationManager);
 
     //Mana costs...
 
 
-    mHealth.mCurrent.SetReplicator("mHP", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
-    mPAR.mCurrent.SetReplicator("mMP", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
-    mHealth.mMax.SetReplicator("mMaxHP", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
-    mPAR.mMax.SetReplicator("mMaxMP", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
+    mHealth.mCurrent.SetReplicator("mHP", &npc_MapRepData, MAP_REPDATA,
+                                   &mReplicationManager);
+    mPAR.mCurrent.SetReplicator("mMP", &npc_MapRepData, MAP_REPDATA,
+                                &mReplicationManager);
+    mHealth.mMax.SetReplicator("mMaxHP", &npc_MapRepData, MAP_REPDATA,
+                               &mReplicationManager);
+    mPAR.mMax.SetReplicator("mMaxMP", &npc_MapRepData, MAP_REPDATA,
+                            &mReplicationManager);
 
-    ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1, &mReplicationManager);
-    mIsPhysicalImmune.SetReplicator("IsPhysicalImmune", &npc_LocalRepData2, LOCAL_REP_DATA2, &mReplicationManager);
-    mIsMagicImmune.SetReplicator("IsMagicImmune", &npc_LocalRepData2, LOCAL_REP_DATA2, &mReplicationManager);
-    ReplicationHelper::FillHeroLocalRepData(&charInterRep, &npc_LocalRepData1, &mReplicationManager);
-    ReplicationHelper::FillHeroMapRepData(&charInterRep, &npc_MapRepData, &mReplicationManager);
+    ReplicationHelper::FillLocalRepData(this, &charState, &npc_LocalRepData1,
+                                        &mReplicationManager);
+    mIsPhysicalImmune.SetReplicator("IsPhysicalImmune", &npc_LocalRepData2,
+                                    LOCAL_REP_DATA2, &mReplicationManager);
+    mIsMagicImmune.SetReplicator("IsMagicImmune", &npc_LocalRepData2,
+                                 LOCAL_REP_DATA2, &mReplicationManager);
+    ReplicationHelper::FillHeroLocalRepData(&charInterRep, &npc_LocalRepData1,
+                                            &mReplicationManager);
+    ReplicationHelper::FillHeroMapRepData(&charInterRep, &npc_MapRepData,
+                                          &mReplicationManager);
 
-    mExp.mLevel.SetReplicator("mLevelRef", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
-    mDebugDrawRadius.SetReplicator("mDebugDrawRadius", &npc_MapRepData, MAP_REPDATA, &mReplicationManager);
+    mExp.mLevel.SetReplicator("mLevelRef", &npc_MapRepData, MAP_REPDATA,
+                              &mReplicationManager);
+    mDebugDrawRadius.SetReplicator("mDebugDrawRadius", &npc_MapRepData,
+                                   MAP_REPDATA, &mReplicationManager);
     mReplicationManager.Init(&npc_ClientSpecific,
                              &npc_LocalRepData1,
                              &npc_LocalRepData2,

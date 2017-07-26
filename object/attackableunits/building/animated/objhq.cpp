@@ -1,6 +1,4 @@
 #include "objhq.h"
-#include "world.h"
-#include "objectmanager.h"
 
 namespace
 {
@@ -12,8 +10,7 @@ namespace
     CReplInfo32 npc_OnVisibleRepData;
 }
 
-ObjHQ::ObjHQ(World *world)
-    : ObjAnimatedBuilding(world)
+ObjHQ::ObjHQ(World *world) : ObjAnimatedBuilding(world)
 {
     mReplicationManager.mBase = this;
     SetupReplicationInfo();

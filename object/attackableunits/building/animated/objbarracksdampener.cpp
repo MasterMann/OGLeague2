@@ -1,6 +1,4 @@
 #include "objbarracksdampener.h"
-#include "world.h"
-#include "objectmanager.h"
 
 namespace
 {
@@ -12,8 +10,7 @@ namespace
     CReplInfo32 npc_OnVisibleRepData;
 }
 
-ObjBarracksDampener::ObjBarracksDampener(World *world)
-    : ObjAnimatedBuilding(world)
+ObjBarracksDampener::ObjBarracksDampener(World *world) : ObjAnimatedBuilding(world)
 {
     mReplicationManager.mBase = this;
     SetupReplicationInfo();

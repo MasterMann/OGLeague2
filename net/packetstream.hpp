@@ -28,8 +28,9 @@ public:
     std::vector<uint8_t> data() const
     {
         auto tmp = str();
-        std::vector<uint8_t> ret((uint8_t*)&mBase, (uint8_t*)&mBase+sizeof(PKT));
-        ret.insert(ret.end(),(uint8_t*)&tmp[0], (uint8_t*)&tmp[tmp.size()]);
+        std::vector<uint8_t> ret((uint8_t*)&mBase,
+                                 (uint8_t*)&mBase+sizeof(PKT));
+        ret.insert(ret.end(), (uint8_t*)&tmp[0], (uint8_t*)&tmp[tmp.size()]);
         return ret;
     }
 };

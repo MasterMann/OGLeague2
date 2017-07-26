@@ -11,7 +11,7 @@ struct Replicate : ReplicateI
     ReplicationType mType;
     ReplicationManager *mReplicator = nullptr;
     void SetReplicator(std::string name, CReplInfo32 *crep, ReplicationType type,
-                        ReplicationManager *replicator)
+                       ReplicationManager *replicator)
     {
         void *offset = nullptr;
         if(replicator->mBase != nullptr)

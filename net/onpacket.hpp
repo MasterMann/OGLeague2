@@ -9,6 +9,8 @@ class OnPacket
 {
 protected:
     ServerI *pServer;
+    typedef void(packetslotfun)(uint32_t, uint8_t*, size_t);
+    typedef wink::slot<packetslotfun> packetslot;
 public:
     OnPacket(ServerI &server)
         : OnPacket(&server)
@@ -19,14 +21,15 @@ public:
     OnPacket(ServerI *server)
     {
         pServer = server;
-        pServer->OnPacket[PKT::CHANNEL][PKT::ID].connect(wink::slot<void(uint32_t, uint8_t*, size_t)>(this,
-                                              (void(OnPacket<PKT>::*)(uint32_t, uint8_t*, size_t))(&OnPacket<PKT>::Handle)));
+        pServer->OnPacket[PKT::CHANNEL][PKT::ID]
+                .connect(packetslot(this, (packetslotfun OnPacket<PKT>::*) &OnPacket<PKT>::Handle));
     }
 
     virtual ~OnPacket()
     {
-        pServer->OnPacket[PKT::CHANNEL][PKT::ID].disconnect(wink::slot<void(uint32_t, uint8_t*, size_t)>(this,
-                                               (void(OnPacket<PKT>::*)(uint32_t, uint8_t*, size_t))(&OnPacket<PKT>::Handle)));
+        pServer->OnPacket[PKT::CHANNEL][PKT::ID]
+                .disconnect(packetslot(this,
+                                       (packetslotfun OnPacket<PKT>::*) &OnPacket<PKT>::Handle));
     }
 
     virtual void Handle(uint32_t cid, PKT *pkt, size_t size)

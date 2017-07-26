@@ -4,7 +4,8 @@
 
 namespace
 {
-struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIABLE>
+struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT,
+        ENET_PACKET_FLAG_RELIABLE>
 {
     uint8_t cmd;
     uint32_t clientID;
@@ -13,7 +14,8 @@ struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIA
 };
 }
 
-void NetServer::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size)
+void NetServer::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data,
+                                size_t size)
 {
     switch(channel)
     {
@@ -85,7 +87,8 @@ bool NetServer::host(uint32_t timeout)
                     break;
                 if(event.packet->dataLength >= 8)
                     pGameInfo->blowfish.Decrypt(event.packet->data,
-                                                event.packet->dataLength-(event.packet->dataLength%8));
+                                                event.packet->dataLength
+                                                -(event.packet->dataLength%8));
                 OnNetworkPacket((uint64_t)(event.peer->data),
                                 event.channelID,
                                 (uint8_t*)(event.packet->data),
@@ -102,14 +105,14 @@ bool NetServer::host(uint32_t timeout)
     return true;
 }
 
-bool NetServer::sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t channel, uint32_t flags)
+bool NetServer::sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size,
+                              uint8_t channel, uint32_t flags)
 {
     if(cid > mMax)
         return false;
     ENetPeer *peer = mPeers[cid];
     if(peer == nullptr)
         return false;
-    std::cout<<"Sent packet with id:"<<(uint32_t)pkt[0]<<" on channel"<<(uint32_t)channel<<std::endl;
     ENetPacket *packet = enet_packet_create(pkt, size, flags);
     if(size >= 8)
         pGameInfo->blowfish.Encrypt(packet->data, size-(size%8));
@@ -150,7 +153,8 @@ bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
     rpkt.playerID = pkt->playerID;
     rpkt.checkId = pkt->checkId;
     //sendPacket(pkt->playerID, rpkt);
-    sendPacketRaw(pkt->playerID, (uint8_t*) &rpkt, sizeof(rpkt), CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIABLE);
+    sendPacketRaw(pkt->playerID, (uint8_t*) &rpkt, sizeof(rpkt),
+                  CHANNEL_DEFAULT, ENET_PACKET_FLAG_RELIABLE);
     OnConnected(pkt->playerID);
     return true;
 }

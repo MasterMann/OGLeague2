@@ -1,7 +1,5 @@
 #include "objaiminion.h"
 #include "stats/replicationhelper.h"
-#include "world.h"
-#include "objectmanager.h"
 
 namespace
 {
@@ -14,8 +12,7 @@ namespace
 }
 
 
-ObjAiMinion::ObjAiMinion(World *world)
-    : ObjAiBase(world)
+ObjAiMinion::ObjAiMinion(World *world) : ObjAiBase(world)
 {
     mReplicationManager.mBase = this;
     SetupReplicationInfo();

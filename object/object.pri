@@ -17,7 +17,8 @@ HEADERS += \
     $$PWD/attackableunits/attackableunit.h \
     $$PWD/spellmissile/objspellmissile.h \
     $$PWD/gameobject.h \
-    $$PWD/gameobjectsall.h
+    $$PWD/gameobjectsall.h \
+    $$PWD/objectmanager.h
 
 SOURCES += \
     $$PWD/attackableunits/ai/objaibase.cpp \
@@ -37,4 +38,5 @@ SOURCES += \
     $$PWD/attackableunits/building/objspawnpoint.cpp \
     $$PWD/attackableunits/attackableunit.cpp \
     $$PWD/spellmissile/objspellmissile.cpp \
-    $$PWD/gameobject.cpp
+    $$PWD/gameobject.cpp \
+    $$PWD/objectmanager.cpp

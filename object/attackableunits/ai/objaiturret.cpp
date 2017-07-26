@@ -1,7 +1,5 @@
 #include "objaiturret.h"
 #include "stats/replicationhelper.h"
-#include "world.h"
-#include "objectmanager.h"
 
 namespace
 {
@@ -13,8 +11,7 @@ namespace
     CReplInfo32 npc_OnVisibleRepData;
 }
 
-ObjAiTurret::ObjAiTurret(World *world)
-    : ObjAiBase(world)
+ObjAiTurret::ObjAiTurret(World *world) : ObjAiBase(world)
 {
 
     mReplicationManager.mBase = this;

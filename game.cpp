@@ -2,12 +2,12 @@
 #include <iostream>
 #include "game.h"
 #include "net/serveri.hpp"
-#include "objectmanager.h"
+#include "object/objectmanager.h"
 #include "playermanager.h"
 #include "scripts/scriptmap.h"
 #include "common/gameinfo.hpp"
 #include "timemanager.h"
-#include "map.h"
+#include "map/map.h"
 #include "world.h"
 
 using namespace std;

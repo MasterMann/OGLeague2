@@ -1,12 +1,12 @@
 #include "world.h"
 #include "timemanager.h"
-#include "map.h"
-#include "objectmanager.h"
 #include "playermanager.h"
-#include "datamanager.h"
-#include "scripts/scriptmap.h"
-#include "netserver.h"
 #include "common/gameinfo.hpp"
+#include "map/map.h"
+#include "data/datamanager.h"
+#include "scripts/scriptmap.h"
+#include "object/objectmanager.h"
+#include "net/netserver.h"
 
 World::World()
 {

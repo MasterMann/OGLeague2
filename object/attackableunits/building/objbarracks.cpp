@@ -1,7 +1,5 @@
 #include "objbarracks.h"
 #include "stats/replicationhelper.h"
-#include "world.h"
-#include "objectmanager.h"
 
 namespace
 {
@@ -13,8 +11,7 @@ namespace
     CReplInfo32 npc_OnVisibleRepData;
 }
 
-ObjBarracks::ObjBarracks(World *world)
-    : ObjBuilding(world)
+ObjBarracks::ObjBarracks(World *world) : ObjBuilding(world)
 {
     mReplicationManager.mBase = this;
     SetupReplicationInfo();

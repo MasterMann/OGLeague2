@@ -4,8 +4,7 @@
 
 using namespace std;
 
-ObjectManager::ObjectManager(World *world)
-    : pWorld(world)
+ObjectManager::ObjectManager(World *world) : pWorld(world)
 {
 
 }
@@ -41,7 +40,8 @@ void ObjectManager::update(float delta)
         o->update();
 }
 
-GameObject *ObjectManager::CreateGameObject(string className, string loadName, r3dPoint3D pos, int flags, void *data)
+GameObject *ObjectManager::CreateGameObject(string className, string loadName,r3dPoint3D pos,
+                                            int flags, void *data)
 {
     GameObject *obj;
     if(className == "ObjAiBase")
@@ -84,13 +84,11 @@ GameObject *ObjectManager::CreateGameObject(string className, string loadName, r
         return nullptr;
 
     obj->Load(loadName);
-    cout<<"Created "<<loadName<<" as "<<className<<": "<<(obj!=nullptr?"true":"false")<<endl;
     return obj;
 }
 
 GameObject *ObjectManager::CreateWorldObject(string loadName)
 {
-
     static struct {
         string name; //String identifier in loadName
         string obj;  //Object class name
