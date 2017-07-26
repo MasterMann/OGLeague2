@@ -211,4 +211,5 @@ HEADERS += \
     $$PWD/shared/combatmessage.h \
     $$PWD/shared/orderinfo.h \
     $$PWD/shared/speedparams.h \
-    $$PWD/shared/herostats.h
+    $$PWD/shared/herostats.h \
+    $$PWD/packets_all.hpp

@@ -1,6 +1,7 @@
 #include "netserver.h"
-#include "net/basepacket.hpp"
-#include "packets/packetenums.hpp"
+#include "world.h"
+#include "common/gameinfo.hpp"
+#include "packets/packets.hpp"
 
 namespace
 {
@@ -14,32 +15,7 @@ struct PKT_KeyCheck_s : NetBasePacket<0, CHANNEL_DEFAULT,
 };
 }
 
-void NetServer::OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data,
-                                size_t size)
-{
-    switch(channel)
-    {
-    case CHANNEL_DEFAULT:
-    case CHANNEL_GENERIC_APP_BROADCAST:
-    case CHANNEL_GENERIC_APP_BROADCAST_UNRELIABLE:
-        std::cout<<"unhandled channel: "<<channel<<std::endl;
-        break;
-    case CHANNEL_GENERIC_APP_TO_SERVER:
-        OnPacket[CHANNEL_GENERIC_APP_TO_SERVER][data[0]](cid, data, size);
-        break;
-    case CHANNEL_MIDDLE_TIER_CHAT:
-        OnPacket[CHANNEL_MIDDLE_TIER_CHAT][EGP_Chat](cid, data, size);
-        break;
-    case CHANNEL_MIDDLE_TIER_ROSTER:
-        OnPacket[CHANNEL_MIDDLE_TIER_ROSTER][data[0]](cid, data, size);
-        break;
-    default:
-        std::cout<<"Unkown channel: "<<(uint32_t)channel<<std::endl;
-        break;
-    }
-}
-
-NetServer::NetServer()
+NetServer::NetServer(World *world) : pWorld(world)
 {
 }
 
@@ -49,12 +25,11 @@ NetServer::~NetServer()
         enet_host_destroy(mHost);
 }
 
-bool NetServer::start(GameInfo *gameinfo)
+bool NetServer::start()
 {
-    pGameInfo = gameinfo;
-    mMax = gameinfo->getHumans();
-    mAddress.host = gameinfo->address;
-    mAddress.port = gameinfo->port;
+    mMax = pWorld->gameinfo->getHumans();
+    mAddress.host = pWorld->gameinfo->address;
+    mAddress.port = pWorld->gameinfo->port;
     mHost = enet_host_create(&mAddress, 32, 0, 0);
     return mHost != nullptr;
 }
@@ -86,13 +61,12 @@ bool NetServer::host(uint32_t timeout)
                 if(event.channelID >= CHANNEL_NUM_TOTAL)
                     break;
                 if(event.packet->dataLength >= 8)
-                    pGameInfo->blowfish.Decrypt(event.packet->data,
-                                                event.packet->dataLength
-                                                -(event.packet->dataLength%8));
-                OnNetworkPacket((uint64_t)(event.peer->data),
-                                event.channelID,
-                                (uint8_t*)(event.packet->data),
-                                event.packet->dataLength);
+                    pWorld->gameinfo->blowfish.Decrypt(event.packet->data,
+                                                       event.packet->dataLength
+                                                       -(event.packet->dataLength%8));
+                pWorld->packets->OnNetworkPacket((uint64_t)(event.peer->data), event.channelID,
+                                                 (uint8_t*)(event.packet->data),
+                                                 event.packet->dataLength);
             }
             else
             {
@@ -105,8 +79,8 @@ bool NetServer::host(uint32_t timeout)
     return true;
 }
 
-bool NetServer::sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size,
-                              uint8_t channel, uint32_t flags)
+bool NetServer::sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t channel,
+                              uint32_t flags)
 {
     if(cid > mMax)
         return false;
@@ -115,17 +89,21 @@ bool NetServer::sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size,
         return false;
     ENetPacket *packet = enet_packet_create(pkt, size, flags);
     if(size >= 8)
-        pGameInfo->blowfish.Encrypt(packet->data, size-(size%8));
+        pWorld->gameinfo->blowfish.Encrypt(packet->data, size-(size%8));
     enet_peer_send(peer, channel, packet);
     return true;
 }
 
-void NetServer::eachClient(std::function<void (uint32_t, ServerI *)> each)
+void NetServer::eachClient(std::function<void (uint32_t, NetServer *)> each)
 {
     for(auto p: mPeers)
         if(p.second != nullptr)
             each(p.first, this);
 }
+
+
+
+
 
 bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
 {
@@ -134,9 +112,9 @@ bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
         return false;
     if(packet->dataLength != sizeof(PKT_KeyCheck_s))
         return false;
-    if(pGameInfo->blowfish.Decrypt(pkt->checkId) != pkt->playerID)
+    if(pWorld->gameinfo->blowfish.Decrypt(pkt->checkId) != pkt->playerID)
         return false;
-    if(pGameInfo->blowfish.Encrypt(pkt->playerID) != pkt->checkId)
+    if(pWorld->gameinfo->blowfish.Encrypt(pkt->playerID) != pkt->checkId)
         return false;
     if(pkt->playerID > mMax)
         return false;

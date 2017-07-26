@@ -9,31 +9,43 @@
 #include <iostream>
 #include <type_traits>
 #include "enet.hpp"
-#include "net/serveri.hpp"
+#include "wink.hpp"
 
-class NetServer : public ServerI
+class World;
+class NetServer
 {
 protected:
 private:
+    World *pWorld;
     uint32_t mMax = 0;
     uint32_t mCount = 1;
     ENetAddress mAddress;
     std::map<int, ENetPeer*> mPeers;
     ENetHost* mHost = nullptr;
 
-    void OnNetworkPacket(uint32_t cid, uint8_t channel, uint8_t *data, size_t size);
+    bool handleAuth(ENetPeer *peer, ENetPacket *packet);
 public:
-    NetServer();
+    NetServer(World *world);
     ~NetServer();
-    bool start(GameInfo *gameinfo);
+    bool start();
     bool host(uint32_t timeout = 0);
 
     bool sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t channel,
                        uint32_t flags = ENET_PACKET_FLAG_RELIABLE);
-
-    void eachClient(std::function<void(uint32_t, ServerI*)> each);
-private:
-    bool handleAuth(ENetPeer *peer, ENetPacket *packet);
+    void eachClient(std::function<void(uint32_t, NetServer *)> each);
+    bool sendPacket(uint32_t cid, auto &pkt)
+    {
+        return sendPacketRaw(cid, (uint8_t*) &pkt, sizeof(pkt), pkt.CHANNEL, pkt.FLAGS);
+    }
+    /*
+    bool sendStream(uint32_t cid, auto &stream)
+    {
+        auto d = stream.data();
+        return sendPacketRaw(cid, &d[0], d.size(), stream->CHANNEL, stream->LAGS);
+    }
+    */
+    wink::signal<std::function<void(uint32_t cid)>> OnConnected;
+    wink::signal<std::function<void(uint32_t cid)>> OnDisconnected;
 };
 
 #endif // NetServer_H

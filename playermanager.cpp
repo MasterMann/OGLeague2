@@ -1,5 +1,7 @@
 #include "playermanager.h"
-#include "net/serveri.hpp"
+#include "net/netserver.h"
+#include "net/packetstream.hpp"
+#include "common/gameinfo.hpp"
 #include "timemanager.h"
 
 void PlayerManager::Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size)
@@ -10,28 +12,28 @@ void PlayerManager::Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size
     res1.current_teamsize_chaos = 0;
     res1.teamsize_order = 1;
     res1.teamsize_chaos = 0;
-    pServer->sendPacket(cid, res1);
+    pWorld->server->sendPacket(cid, res1);
 
     EGP_RequestReskin_s res3;
     res3.Id_Player = cid;
     res3.skinID = 0;
     strcpy(res3.buffer, "Annie");
     res3.bufferLen = strlen(res3.buffer);
-    pServer->sendPacket(cid, res3);
+    pWorld->server->sendPacket(cid, res3);
 
     EGP_RequestRename_s res2;
     res2.Id_Player = cid;
     res2.skinID = 0;
     strcpy(res2.buffer, "Test");
     res2.bufferLen = strlen(res2.buffer);
-    pServer->sendPacket(cid, res2);
+    pWorld->server->sendPacket(cid, res2);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_C2S_Ping_Load_Info_s *pkt, size_t size)
 {
     PKT_S2C_Ping_Load_Info_s ans;
     ans.info = pkt->info;
-    pServer->sendPacket(cid, ans);
+    pWorld->server->sendPacket(cid, ans);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_C2S_Reconnect_s *pkt, size_t size)
@@ -39,7 +41,7 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_Reconnect_s *pkt, size_t size)
     PKT_S2C_Reconnect_s ans;
     ans.cid = cid;
     ans.fromID = cid;
-    pServer->sendPacket(cid, ans);
+    pWorld->server->sendPacket(cid, ans);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *pkt, size_t size)
@@ -47,7 +49,7 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *pkt, size_t s
     PKT_S2C_QueryStatusAns_s ans;
     ans.res = true;
     ans.fromID = cid;
-    pServer->sendPacket(cid, ans);
+    pWorld->server->sendPacket(cid, ans);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_C2S_CharSelected_s *pkt, size_t size)
@@ -55,7 +57,7 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_CharSelected_s *pkt, size_t siz
     PKT_S2C_StartSpawn_s ans1;
     ans1.numbBotsChaos = 0;
     ans1.numbBotsOrder = 0;
-    pServer->sendPacket(cid, ans1);
+    pWorld->server->sendPacket(cid, ans1);
 
     PKT_S2C_CreateHero_s ans3;
     ans3.botRank = 0;
@@ -69,10 +71,10 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_CharSelected_s *pkt, size_t siz
     ans3.netObjID = 0x40000001;
     ans3.netNodeID = 0x40;
     strcpy(ans3.Name, "Test");
-    pServer->sendPacket(cid, ans3);
+    pWorld->server->sendPacket(cid, ans3);
 
     PKT_S2C_EndSpawn_s ans2;
-    pServer->sendPacket(cid, ans2);
+    pWorld->server->sendPacket(cid, ans2);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_SynchVersionC2S_s *pkt, size_t size)
@@ -87,13 +89,13 @@ void PlayerManager::Handle(uint32_t cid, PKT_SynchVersionC2S_s *pkt, size_t size
     ans.playerInfo[0].summonorLevel = 30;
     ans.playerInfo[0].summonorSpell1 = 0;
     ans.playerInfo[0].summonorSpell2 = 0;
-    pServer->sendPacket(cid, ans);
+    pWorld->server->sendPacket(cid, ans);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_C2S_ClientReady_s *pkt, size_t size)
 {
     PKT_S2C_StartGame_s ans1;
-    pServer->sendPacket(cid, ans1);
+    pWorld->server->sendPacket(cid, ans1);
 
     PacketStream<PKT_OnEnterVisiblityClient_s> ans2;
     ans2->fromID = 0x40000001;
@@ -106,12 +108,12 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_ClientReady_s *pkt, size_t size
             < (uint32_t) 1                      //syncID
             < (float) 26.0f < (float) 280.0f    //x y
             < (float) 26.0f < (float) 280.0f;   //x y
-    pServer->sendStream(cid, ans2);
+    //pWorld->server->sendStream(cid, ans2);
 }
 
 void PlayerManager::UpdateRoster(EGP_TeamRosterUpdate_s update)
 {
-    pServer->eachClient([update](uint32_t cid, ServerI *server)
+    pWorld->server->eachClient([update](uint32_t cid, NetServer *server)
     {
         server->sendPacket(cid, update);
     });

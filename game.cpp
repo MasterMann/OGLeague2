@@ -1,11 +1,11 @@
 #include <string.h>
 #include <iostream>
 #include "game.h"
-#include "net/serveri.hpp"
 #include "object/objectmanager.h"
 #include "playermanager.h"
 #include "scripts/scriptmap.h"
 #include "common/gameinfo.hpp"
+#include "net/netserver.h"
 #include "timemanager.h"
 #include "map/map.h"
 #include "world.h"
@@ -49,7 +49,7 @@ void Game::LoadGame()
 void Game::Play()
 {
     r3dFileManager::setBasePaths(pWorld->gameinfo->basePaths);
-    if(!pWorld->server->start(pWorld->gameinfo))
+    if(!pWorld->server->start())
     {
         std::cout<<"Could not start sever!"<<std::endl;
         return;

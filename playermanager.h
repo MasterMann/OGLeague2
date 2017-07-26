@@ -17,18 +17,16 @@ class PlayerManager :
 {
 private:
     World* pWorld;
-    ServerI* pServer;
 public:
     PlayerManager(World* world) :
         pWorld(world),
-        pServer(world->server),
-        OnPacket<EGP_RequestJoinTeam_s>(world->server),
-        OnPacket<PKT_SynchVersionC2S_s>(world->server),
-        OnPacket<PKT_C2S_Ping_Load_Info_s>(world->server),
-        OnPacket<PKT_C2S_Reconnect_s>(world->server),
-        OnPacket<PKT_C2S_QueryStatusReq_s>(world->server),
-        OnPacket<PKT_C2S_CharSelected_s>(world->server),
-        OnPacket<PKT_C2S_ClientReady_s>(world->server)
+        OnPacket<EGP_RequestJoinTeam_s>(world->packets),
+        OnPacket<PKT_SynchVersionC2S_s>(world->packets),
+        OnPacket<PKT_C2S_Ping_Load_Info_s>(world->packets),
+        OnPacket<PKT_C2S_Reconnect_s>(world->packets),
+        OnPacket<PKT_C2S_QueryStatusReq_s>(world->packets),
+        OnPacket<PKT_C2S_CharSelected_s>(world->packets),
+        OnPacket<PKT_C2S_ClientReady_s>(world->packets)
     {
     }
     void Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size);

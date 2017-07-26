@@ -1,33 +1,27 @@
 #ifndef ONPACKET_H
 #define ONPACKET_H
 
-#include "serveri.hpp"
-#include "basepacket.hpp"
+#include "packets/packets.hpp"
 
 template<class PKT>
 class OnPacket
 {
 protected:
-    ServerI *pServer;
+    Packets *packets;
     typedef void(packetslotfun)(uint32_t, uint8_t*, size_t);
     typedef wink::slot<packetslotfun> packetslot;
 public:
-    OnPacket(ServerI &server)
-        : OnPacket(&server)
-    {
 
-    }
-
-    OnPacket(ServerI *server)
+    OnPacket(Packets *packetsA)
     {
-        pServer = server;
-        pServer->OnPacket[PKT::CHANNEL][PKT::ID]
+        packets = packetsA;
+        packets->OnPacket[PKT::CHANNEL][PKT::ID]
                 .connect(packetslot(this, (packetslotfun OnPacket<PKT>::*) &OnPacket<PKT>::Handle));
     }
 
     virtual ~OnPacket()
     {
-        pServer->OnPacket[PKT::CHANNEL][PKT::ID]
+        packets->OnPacket[PKT::CHANNEL][PKT::ID]
                 .disconnect(packetslot(this,
                                        (packetslotfun OnPacket<PKT>::*) &OnPacket<PKT>::Handle));
     }

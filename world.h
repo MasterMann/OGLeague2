@@ -13,12 +13,13 @@ enum GGameState_s : int
 
 class Map;
 class TimeManager;
-class ServerI;
+class NetServer;
 class PlayerManager;
 class ObjectManager;
 class GameInfo;
 class ScriptMap;
 class DataManager;
+class Packets;
 struct World
 {
     TimeManager *timemanager;
@@ -26,7 +27,8 @@ struct World
     PlayerManager *playermanager;
     ObjectManager *objectmanager;
     ScriptMap *scriptmap;
-    ServerI *server;
+    NetServer *server;
+    Packets *packets;
     GameInfo *gameinfo;
     DataManager *scriptmanager;
     GGameState_s gamestate = GAMESTATE_PREGAME;

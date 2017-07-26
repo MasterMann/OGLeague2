@@ -7,11 +7,13 @@
 #include "scripts/scriptmap.h"
 #include "object/objectmanager.h"
 #include "net/netserver.h"
+#include "packets/packets.hpp"
 
 World::World()
 {
     gameinfo = new GameInfo;
-    server = new NetServer;
+    packets = new Packets;
+    server = new NetServer(this);
     timemanager = new TimeManager(this);
     map = new Map(this);
     playermanager = new PlayerManager(this);
