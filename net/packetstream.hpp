@@ -13,11 +13,14 @@ public:
     PacketStream()
     {
     }
-    PacketStream(PKT* pkt, size_t size)
+    PacketStream(uint8_t* pkt, size_t size)
     {
-       std::copy((uint8_t*)pkt,(uint8_t*)pkt+std::min(size, sizeof(PKT)), (uint8_t*)&mBase);
-       if(size > sizeof(PKT))
-          write((const char*)pkt + sizeof(PKT), size - sizeof(PKT));
+        std::copy(pkt, pkt+std::min(size, sizeof(PKT)), (uint8_t*)&mBase);
+        if(size > sizeof(PKT))
+           write((const char*)pkt + sizeof(PKT), size - sizeof(PKT));
+    }
+    PacketStream(PKT* pkt, size_t size) : PacketStream((uint8_t *) pkt, size)
+    {
     }
 
     PKT* operator->()

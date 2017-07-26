@@ -18,6 +18,11 @@ Game::Game()
     pWorld = new World;
 }
 
+Game::~Game()
+{
+    delete pWorld;
+}
+
 void Game::LoadWorld()
 {
     pWorld->map->init();

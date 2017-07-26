@@ -5,7 +5,6 @@
 #include "packets/packets.hpp"
 #include "world.h"
 
-class ServerI;
 class PlayerManager :
         public OnPacket<EGP_RequestJoinTeam_s>,
         public OnPacket<PKT_SynchVersionC2S_s>,

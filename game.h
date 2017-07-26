@@ -12,6 +12,7 @@ private:
     World *pWorld;
 public:
     Game();
+    ~Game();
     void LoadWorld();
     void LoadGame();
     void Play();
