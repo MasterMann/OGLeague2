@@ -20,6 +20,7 @@ class GameInfo;
 class ScriptMap;
 class DataManager;
 class Packets;
+class NetNotify;
 struct World
 {
     TimeManager *timemanager;
@@ -29,6 +30,7 @@ struct World
     ScriptMap *scriptmap;
     NetServer *server;
     Packets *packets;
+    NetNotify *notify;
     GameInfo *gameinfo;
     DataManager *scriptmanager;
     GGameState_s gamestate = GAMESTATE_PREGAME;

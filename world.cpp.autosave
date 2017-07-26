@@ -8,7 +8,7 @@
 #include "object/objectmanager.h"
 #include "net/netserver.h"
 #include "packets/packets.hpp"
-#include "net/netnotify.h"
+#include "net/netnotify.hpp"
 
 World::World()
 {

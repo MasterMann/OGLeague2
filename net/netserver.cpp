@@ -94,16 +94,12 @@ bool NetServer::sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t c
     return true;
 }
 
-void NetServer::eachClient(std::function<void (uint32_t, NetServer *)> each)
+void NetServer::eachClient(std::function<void(uint32_t)> each)
 {
     for(auto p: mPeers)
         if(p.second != nullptr)
-            each(p.first, this);
+            each(p.first);
 }
-
-
-
-
 
 bool NetServer::handleAuth(ENetPeer *peer, ENetPacket *packet)
 {

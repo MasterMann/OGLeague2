@@ -32,18 +32,7 @@ public:
 
     bool sendPacketRaw(uint32_t cid, uint8_t *pkt, size_t size, uint8_t channel,
                        uint32_t flags = ENET_PACKET_FLAG_RELIABLE);
-    void eachClient(std::function<void(uint32_t, NetServer *)> each);
-    bool sendPacket(uint32_t cid, auto &pkt)
-    {
-        return sendPacketRaw(cid, (uint8_t*) &pkt, sizeof(pkt), pkt.CHANNEL, pkt.FLAGS);
-    }
-    /*
-    bool sendStream(uint32_t cid, auto &stream)
-    {
-        auto d = stream.data();
-        return sendPacketRaw(cid, &d[0], d.size(), stream->CHANNEL, stream->LAGS);
-    }
-    */
+    void eachClient(std::function<void(uint32_t)> each);
     wink::signal<std::function<void(uint32_t cid)>> OnConnected;
     wink::signal<std::function<void(uint32_t cid)>> OnDisconnected;
 };

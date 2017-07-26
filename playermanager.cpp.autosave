@@ -1,7 +1,7 @@
 #include "playermanager.h"
 #include "net/netserver.h"
 #include "net/packetstream.hpp"
-#include "net/netnotify.h"
+#include "net/netnotify.hpp"
 #include "common/gameinfo.hpp"
 #include "timemanager.h"
 
