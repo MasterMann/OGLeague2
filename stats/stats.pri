@@ -8,7 +8,8 @@ HEADERS += \
     $$PWD/mana.hpp \
     $$PWD/replicationhelper.h \
     $$PWD/replicationmanager.h \
-    $$PWD/replicate.hpp
+    $$PWD/replicate.hpp \
+    $$PWD/spelltrainingpoints.hpp
 
 SOURCES += \
     $$PWD/replicationmanager.cpp \

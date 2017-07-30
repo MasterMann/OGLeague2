@@ -1,8 +1,6 @@
 #ifndef CHARACTERINTERMEDIATE_H
 #define CHARACTERINTERMEDIATE_H
 
-#include "chardata.hpp"
-
 struct CharacterIntermediate
 {
     float mFlatCooldownMod = 0;
