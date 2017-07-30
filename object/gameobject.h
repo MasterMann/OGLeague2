@@ -50,7 +50,7 @@ public:
     World *pWorld = nullptr;
     void assignIDByName();
     void assignID();
-    uint32_t networkID() const;
+    virtual uint32_t networkID();
     void setNetworkID(const uint32_t &networkID);
     virtual void OnNetworkIDChanged();
     uint32_t ownerID() const;

@@ -6,8 +6,8 @@
 class ObjBarracks : public ObjBuilding
 {
 protected:
-    ReplicationManager mReplicationManager;
 public:
+    ReplicationManager mReplicationManager;
     ObjBarracks(World *world);
     void SetupReplicationInfo();
 

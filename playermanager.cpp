@@ -112,6 +112,17 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_ClientReady_s *pkt, size_t size
     pWorld->notify->sendStream(cid, ans2);
 }
 
+void PlayerManager::Handle(uint32_t cid, PKT_C2S_MapPing_s *pkt, size_t size)
+{
+    PKT_S2C_MapPing_s ans;
+    ans.pos = pkt->pos;
+    ans.target = pkt->target;
+    ans.src = 0x40000001;
+    ans.bPlayAudio = 1;
+    ans.bShowChat = 1;
+    pWorld->notify->sendPacket(cid, ans);
+}
+
 void PlayerManager::UpdateRoster(EGP_TeamRosterUpdate_s update)
 {
     pWorld->server->eachClient([&, update](uint32_t cid)

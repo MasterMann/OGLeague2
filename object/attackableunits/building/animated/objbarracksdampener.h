@@ -6,8 +6,8 @@
 class ObjBarracksDampener : public ObjAnimatedBuilding
 {
 protected:
-    ReplicationManager mReplicationManager;
 public:
+    ReplicationManager mReplicationManager;
     ObjBarracksDampener(World *world);
     void SetupReplicationInfo();
 };

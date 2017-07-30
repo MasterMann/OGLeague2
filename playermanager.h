@@ -12,7 +12,8 @@ class PlayerManager :
         public OnPacket<PKT_C2S_Reconnect_s>,
         public OnPacket<PKT_C2S_QueryStatusReq_s>,
         public OnPacket<PKT_C2S_CharSelected_s>,
-        public OnPacket<PKT_C2S_ClientReady_s>
+        public OnPacket<PKT_C2S_ClientReady_s>,
+        public OnPacket<PKT_C2S_MapPing_s>
 {
 private:
     World* pWorld;
@@ -25,7 +26,8 @@ public:
         OnPacket<PKT_C2S_Reconnect_s>(world->packets),
         OnPacket<PKT_C2S_QueryStatusReq_s>(world->packets),
         OnPacket<PKT_C2S_CharSelected_s>(world->packets),
-        OnPacket<PKT_C2S_ClientReady_s>(world->packets)
+        OnPacket<PKT_C2S_ClientReady_s>(world->packets),
+        OnPacket<PKT_C2S_MapPing_s>(world->packets)
     {
     }
     void Handle(uint32_t cid, EGP_RequestJoinTeam_s *pkt, size_t size);
@@ -35,6 +37,7 @@ public:
     void Handle(uint32_t cid, PKT_C2S_QueryStatusReq_s *pkt, size_t size);
     void Handle(uint32_t cid, PKT_C2S_CharSelected_s *pkt, size_t size);
     void Handle(uint32_t cid, PKT_C2S_ClientReady_s *pkt, size_t size);
+    void Handle(uint32_t cid, PKT_C2S_MapPing_s *pkt, size_t size);
     void UpdateRoster(EGP_TeamRosterUpdate_s update);
     void update(float delta);
 };

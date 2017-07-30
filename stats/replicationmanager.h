@@ -43,6 +43,7 @@ struct CReplData32
     void Init(CReplInfo32 *ri);
     void *find(std::string name);
     bool Dump(std::vector<uint32_t> &data);
+    void dbgList();
 };
 
 struct ReplicationManager
@@ -59,6 +60,7 @@ struct ReplicationManager
     void MarkChanged(ReplicationType type, int index, uint32_t value);
     uint8_t DumpReplication(std::vector<uint32_t> &data);
     ReplicateI* find(std::string name);
+    void dbgList();
 };
 
 #endif // REPLICATIONMANAGER_H

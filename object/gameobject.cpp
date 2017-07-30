@@ -31,7 +31,7 @@ void GameObject::assignID()
     setNetworkID(pWorld->objectmanager->getNextID());
 }
 
-uint32_t GameObject::networkID() const
+uint32_t GameObject::networkID()
 {
     return mNetworkID;
 }

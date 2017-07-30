@@ -83,6 +83,9 @@ GameObject *ObjectManager::CreateGameObject(string className, string loadName,r3
     else
         return nullptr;
 
+    if(flags & 1)
+        obj->setObjFlags(obj->objFlags() | 1);
+    add(obj);
     obj->Load(loadName);
     return obj;
 }
@@ -116,7 +119,6 @@ GameObject *ObjectManager::CreateWorldObject(string loadName)
             pos.y = 0;
             pos.z = 0;
             GameObject* obj = CreateGameObject(o.obj, loadName, pos, 64, 0);
-            obj->assignIDByName();
             return obj;
         }
     }

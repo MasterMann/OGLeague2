@@ -1,6 +1,7 @@
 #include "replicationmanager.h"
+#include <iostream>
 
-
+using namespace std;
 void ReplicateI::Set(std::string newValue)
 {
 
@@ -72,6 +73,16 @@ bool CReplData32::Dump(std::vector<uint32_t> &data)
     return true;
 }
 
+void CReplData32::dbgList()
+{
+    for(int i = 0; i < 32; i++)
+    {
+        if(info->varNames[i] == "")
+            break;
+        cout<<i<<" - "<<info->varNames[i]<<"-"<<info->varOffsets[i]<<'\n';
+    }
+}
+
 void ReplicationManager::Init(CReplInfo32 *npc_ClientOnly, CReplInfo32 *npc_LocalRepData1, CReplInfo32 *npc_LocalRepData2, CReplInfo32 *npc_MapRepData, CReplInfo32 *npc_OnVisibleRepData, void *base)
 {
     mClientOnlyRepData1.Init(npc_ClientOnly);
@@ -139,4 +150,20 @@ ReplicateI *ReplicationManager::find(std::string name)
     if(!offset)
         return nullptr;
     return (ReplicateI*)((void*)(uint64_t(mBase)+uint64_t(offset)));
+}
+
+void ReplicationManager::dbgList()
+{
+    cout<<"-----------------------------------------------\n";
+    cout<<"----mClientOnlyRepData1:\n";
+    mClientOnlyRepData1.dbgList();
+    cout<<"----mLocalRepData1:\n";
+    mLocalRepData1.dbgList();
+    cout<<"----mLocalRepData2:\n";
+    mLocalRepData2.dbgList();
+    cout<<"----mMapRepData:\n";
+    mMapRepData.dbgList();
+    cout<<"----mOnVisibleRepData:\n";
+    mOnVisibleRepData.dbgList();
+    cout<<"-----------------------------------------------\n";
 }

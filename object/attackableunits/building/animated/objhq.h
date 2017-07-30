@@ -6,8 +6,8 @@
 class ObjHQ : public ObjAnimatedBuilding
 {
 protected:
-    ReplicationManager mReplicationManager;
 public:
+    ReplicationManager mReplicationManager;
     ObjHQ(World *world);
     void SetupReplicationInfo();
 };
