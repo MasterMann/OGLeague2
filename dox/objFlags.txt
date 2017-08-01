@@ -1,0 +1,55 @@
+#define OBJ_CREATE_LOCAL	(1<<0)			// object will NOT be added to world 0x01
+#define OBJ_CREATE_DYNAMIC	(1<<1)			// object will be added to dynamic list - no collision, etc. 0x02
+#define OBJ_CREATE_SKIP_LOAD	(1<<5)		// loadname invalid. 0x20
+#define OBJ_CREATE_SKIP_POS	(1<<6)			// Pos invalid - do not call setpos 0x40
+
+enum EGameObjectFlags
+{
+	// object need be skipped in world object list when user traverse objects, 
+	// usually used for all special objects like terrain, etc..
+	OBJFLAG_SkipCastRay	= (1<<4),
+	// object need be skipped when ObjectManager::Draw() loop occur.
+	// usually used for objects with special drawing order.
+	OBJFLAG_SkipDraw	= (1<<5),		
+
+	// do not check occlusion for this object (usually huge objects, or objects that do not have proper aabb for whatever reason)
+	//OBJFLAG_SkipOcclusionCheck = (1<<6),
+
+	OBJFLAG_ForceSceneBoxBBox = (1<<7),
+
+	OBJFLAG_DisableShadows = (1<<8),
+
+	// for editor and debug, will always draw an object, no matter what
+	OBJFLAG_AlwaysDraw	= (1<<9),		
+
+	OBJFLAG_PlayerCollisionOnly = (1<<10), // object is collision only for player only
+
+	OBJFLAG_AsyncLoading = (1<<11),
+
+#ifdef WO_SERVER
+	OBJFLAG_AddToDummyWorld = (1<<12),	// special flag to add object to other ObjectManager
+#endif
+
+	// internal flags
+	OBJFLAG_JustCreated	= (1<<20),		// object is just created
+
+	OBJFLAG_Removed	= (1<<23),			// in undo buffer
+
+	//	Is object should be culled using map detailed objects cull radius
+	OBJFLAG_Detailed = (1<<24),
+
+	OBJFLAG_ForceSleep = (1<<25),
+};
+
+enum EGameObjectFlags
+{
+  OBJFLAG_IgnoreCollisionOnPlacement = 0x1,
+  OBJFLAG_CollideNever = 0x2,
+  OBJFLAG_SkipCastRay = 0x10,
+  OBJFLAG_SkipDraw = 0x20,
+  OBJFLAG_UserCastRay = 0x80,
+  OBJFLAG_SkipUpdate = 0x100,
+  OBJFLAG_NotifyOnEnterExit = 0x200,
+  OBJFLAG_JustCreated = 0x100000,
+  OBJFLAG_DefaultObject = 0x200000,
+};

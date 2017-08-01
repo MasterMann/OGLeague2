@@ -1,0 +1,54 @@
+Notes:
+	-some files might be replaced with their binary alternative
+	-in such cases plain text files are prefered if they are found
+	-files that offer binary alternative:
+		ini -> inibin
+		lua -> luaobj
+
+LEVELS/
+	MapX/
+		Scene/
+			CFG/
+				objectname.cfg
+			objectname.sco
+			room.dsc
+			room.nvr
+		Scripts/
+			LevelScript.lua
+		AIPath.aimesh
+		AIPath.aimesh_ngrid
+		AIPath.sco
+		Constants.var
+		DeathTimes.ini
+		env.ini
+		ExpCurve.ini
+		Gamma.ini
+		Graphics.ini
+		Minions.dat
+		Mission.ini
+		Particles.dat
+		soundmap.ini
+		World.ini
+DATA/
+	BuildingBlocks/
+		BuildingBlocksBase.lua
+		BBLuaConversionLibrary.luaobj
+	CFG/
+		defaults/
+			Game.cfg
+			GamePermanent.cfg
+		Characters/
+			Name/
+				Scripts/
+					CharScriptName.lua
+				Name.ini
+				Animations.ini
+		Globals/
+			bounty.ini
+			HealthGain.ini
+			Quests.ini
+			Tips.ini
+			UnitStats.ini
+			
+	
+		

@@ -6,8 +6,8 @@
 
 struct Experience
 {
-  Replicate<float> mExp = 0.0f;
-  Replicate<int> mLevel = 0;
+  Replicate<float> mExp;
+  Replicate<int> mLevel;
   SpellTrainingPoints mTrainingPoints;
   float GetExp() const
   {
