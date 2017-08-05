@@ -1,16 +1,9 @@
-# Project to reimplement League of Legends Season 1 server
-*The main focus of this Project is to accurately reimplement the Season 1 League of Legends server.*
-#### Current Todo: 
-1. Get in game
-    * Some reworking needed for stats
-    * Replication needs improvement
-    * R3d framing
-    * Stats loading
-2. Items
-3. Skillshots/spells
-4. etc...
-5. pathing?
-6. movement?
+# Project to document League of Legends Season 1 server in form of c++ code
+*The main focus of this Project is to document the Season 1 League of Legends server (and posibly run?).*
+
+# Note 
+The current implementation is nowhere close to a running server.
+It does however have ability read and parseall necesary client files.
 
 # Setup guide
 

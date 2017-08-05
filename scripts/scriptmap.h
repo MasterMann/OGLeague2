@@ -1,11 +1,13 @@
 #ifndef SCRIPTMAP_H
 #define SCRIPTMAP_H
 
-#include "sol.hpp"
+#include "scripthelper.h"
 
 class World;
 class ScriptMap
 {
+private:
+    ScriptHelper mScriptHelper;
 public:
     ScriptMap(World *world);
     void Init(std::string name);
@@ -14,7 +16,6 @@ public:
     float neutralSpawnTime = 0;
     int m_SpawnInterations = 0;
     bool bPreviousNeutralSpawnEnabled = false;
-    sol::state mState;
     World *pWorld;
 };
 

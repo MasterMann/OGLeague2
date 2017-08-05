@@ -3,18 +3,18 @@
 #include "world.h"
 
 ScriptMap::ScriptMap(World *world)
-    : pWorld(world)
+    : pWorld(world),
+      mScriptHelper(world)
 {
 }
 
 void ScriptMap::Init(std::string name)
 {
-    ScriptHelper::InitState(mState);
-    ScriptHelper::LoadLuaFile("LEVELS/"+name+"/Scripts/LevelScript.lua", mState);
-    mState["OnLevelInit"]();
+    mScriptHelper.LoadLuaFile("LEVELS/"+name+"/Scripts/LevelScript.lua");
+    mScriptHelper.State()["OnLevelInit"]();
 }
 
 void ScriptMap::PostInit()
 {
-    mState["OnPostLevelLoad"]();
+    mScriptHelper.State()["OnPostLevelLoad"]();
 }

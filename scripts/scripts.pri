@@ -1,6 +1,4 @@
 HEADERS += \
-    $$PWD/aitimer.h \
-    $$PWD/neutraltimer.h \
     $$PWD/scripthelper.h \
     $$PWD/scriptmap.h
 
