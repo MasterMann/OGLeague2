@@ -6,7 +6,6 @@
 struct PKT_FX_Create_Group_s : DefaultPacket<PKT_FX_Create_Group>
 {
     char numbFXGroups;
-    char data[];
 };
 #pragma pack(pop)
 

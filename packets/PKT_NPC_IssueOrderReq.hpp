@@ -7,7 +7,6 @@
 struct PKT_NPC_IssueOrderReq_s : DefaultPacket<PKT_NPC_IssueOrderReq>
 {
     OrderInfo info;
-    char data[];
 };
 #pragma pack(pop)
 
