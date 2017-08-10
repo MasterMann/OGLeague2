@@ -8,7 +8,7 @@ struct OrderInfo
 {
     char order;
     r3dPoint3D pos;
-    unsigned int targetNetID;
+    uint32_t targetNetID;
 };
 #pragma pack(pop)
 

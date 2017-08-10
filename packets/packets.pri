@@ -200,8 +200,6 @@ HEADERS += \
     $$PWD/PKT_S2C_Neutral_Camp_Empty.hpp \
     $$PWD/PKT_ResetForSlowLoader.hpp \
     $$PWD/PKT_Batched.hpp \
-    $$PWD/shared/connectioninfo.hpp \
-    $$PWD/shared/playerliteinfo.hpp \
     $$PWD/base.hpp \
     $$PWD/packetenums.hpp \
     $$PWD/packets.hpp \
@@ -212,4 +210,6 @@ HEADERS += \
     $$PWD/shared/orderinfo.h \
     $$PWD/shared/speedparams.h \
     $$PWD/shared/herostats.h \
-    $$PWD/packets_all.hpp
+    $$PWD/packets_all.hpp \
+    $$PWD/shared/playerliteinfo.h \
+    $$PWD/shared/connectioninfo.h

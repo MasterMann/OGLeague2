@@ -21,7 +21,6 @@ World::World()
     playermanager = new PlayerManager(this);
     objectmanager = new ObjectManager(this);
     scriptmap = new ScriptMap(this);
-
 }
 
 World::~World()

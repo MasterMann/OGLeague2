@@ -7,9 +7,9 @@
 #pragma pack(push, 1)
 struct CommonBasicAttack
 {
-    unsigned int targetNetID;
+    uint32_t targetNetID;
     char extraTime;
-    unsigned int missileNextID;
+    uint32_t missileNextID;
     char attackSlot;
 };
 #pragma pack(pop)

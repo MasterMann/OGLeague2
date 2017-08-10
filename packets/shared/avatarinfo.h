@@ -7,8 +7,8 @@
 #pragma pack(push, 1)
 struct AvatarInfo
 {
-  unsigned int itemIDs[30];
-  unsigned int spellHashes[2];
+  uint32_t itemIDs[30];
+  uint32_t spellHashes[2];
   Talent TalentsHashes[80];
   char level;
 };

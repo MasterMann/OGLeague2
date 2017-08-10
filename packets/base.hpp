@@ -7,8 +7,8 @@
 #include <sstream>
 #include "r3d.hpp"
 #include "enet.hpp"
-#include "packets/shared/connectioninfo.hpp"
-#include "packets/shared/playerliteinfo.hpp"
+#include "packets/shared/connectioninfo.h"
+#include "packets/shared/playerliteinfo.h"
 #include "packets/packetenums.hpp"
 #include "net/basepacket.hpp"
 
