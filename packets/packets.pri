@@ -203,13 +203,13 @@ HEADERS += \
     $$PWD/base.hpp \
     $$PWD/packetenums.hpp \
     $$PWD/packets.hpp \
-    $$PWD/shared/avatarinfo.h \
-    $$PWD/shared/talent.h \
-    $$PWD/shared/commonbasicattack.h \
-    $$PWD/shared/combatmessage.h \
-    $$PWD/shared/orderinfo.h \
-    $$PWD/shared/speedparams.h \
-    $$PWD/shared/herostats.h \
     $$PWD/packets_all.hpp \
-    $$PWD/shared/playerliteinfo.h \
-    $$PWD/shared/connectioninfo.h
+    $$PWD/shared/avatarinfo.hpp \
+    $$PWD/shared/combatmessage.hpp \
+    $$PWD/shared/commonbasicattack.hpp \
+    $$PWD/shared/connectioninfo.hpp \
+    $$PWD/shared/herostats.hpp \
+    $$PWD/shared/orderinfo.hpp \
+    $$PWD/shared/playerliteinfo.hpp \
+    $$PWD/shared/speedparams.hpp \
+    $$PWD/shared/talent.hpp
