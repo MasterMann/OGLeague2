@@ -16,7 +16,7 @@ struct PKT_S2C_TeamSurrenderStatus_s : DefaultPacket<PKT_S2C_TeamSurrenderStatus
     Reason reason;
     char forVote;
     char againstVote;
-    int team;
+    int32_t team;
 };
 #pragma pack(pop)
 

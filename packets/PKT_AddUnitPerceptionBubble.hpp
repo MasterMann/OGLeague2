@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_AddUnitPerceptionBubble_s : DefaultPacket<PKT_AddUnitPerceptionBubble>
 {
-    int perceptionBubbleType;
+    int32_t perceptionBubbleType;
     uint32_t clientNetID;
     float radius;
     uint32_t unitNetID;

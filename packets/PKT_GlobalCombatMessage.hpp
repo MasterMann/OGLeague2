@@ -6,7 +6,7 @@
 struct PKT_GlobalCombatMessage_s : DefaultPacket<PKT_GlobalCombatMessage>
 {
     CombatMessage message;
-    unsigned int gameObjectNetIdForName;
+    uint32_t gameObjectNetIdForName;
 };
 #pragma pack(pop)
 

@@ -8,7 +8,7 @@ struct PKT_NPC_BuffReplace_s : DefaultPacket<PKT_NPC_BuffReplace>
     char buffSlot;
     float runningTime;
     float duration;
-    unsigned int casterNetID;
+    uint32_t casterNetID;
 };
 #pragma pack(pop)
 

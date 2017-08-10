@@ -8,10 +8,10 @@ struct PKT_NPC_BuffAdd2_s : DefaultPacket<PKT_NPC_BuffAdd2>
     char buffSlot;
     char buffType;
     char count;
-    unsigned int buffNameHash;
+    uint32_t buffNameHash;
     float runningTime;
     float duration;
-    unsigned int casterNetID;
+    uint32_t casterNetID;
 };
 #pragma pack(pop)
 

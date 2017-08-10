@@ -7,7 +7,7 @@ struct PKT_Pause_s : DefaultPacket<PKT_Pause>
 {
     r3dPoint3D pos;
     r3dPoint3D forward;
-    int syncID;
+    uint32_t syncID;
 };
 #pragma pack(pop)
 

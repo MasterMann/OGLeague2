@@ -6,7 +6,7 @@
 struct PKT_NPC_BuffAddGroup_s : DefaultPacket<PKT_NPC_BuffAddGroup>
 {
     char buffType;
-    unsigned int buffNameHash;
+    uint32_t buffNameHash;
     float runningTime;
     float duration;
     char numInGroup;

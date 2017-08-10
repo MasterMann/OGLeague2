@@ -9,7 +9,7 @@ struct PKT_NPC_BuffUpdateCount_s : DefaultPacket<PKT_NPC_BuffUpdateCount>
     char count;
     float duration;
     float runningTime;
-    unsigned int casterNetID;
+    uint32_t casterNetID;
 };
 #pragma pack(pop)
 

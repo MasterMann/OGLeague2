@@ -7,8 +7,8 @@ struct PKT_UnitApplyDamage_s : DefaultPacket<PKT_UnitApplyDamage>
 {
     int8_t type : 7;
     int8_t hasAttackSound : 1;
-    unsigned int targetNetID;
-    unsigned int sourceNetID;
+    uint32_t targetNetID;
+    uint32_t sourceNetID;
     float damage;
 };
 #pragma pack(pop)

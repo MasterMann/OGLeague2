@@ -6,7 +6,7 @@
 struct PKT_SetItem_s : DefaultPacket<PKT_SetItem>
 {
     char slot;
-    unsigned int itemID;
+    uint32_t itemID;
     char itemsInSlot;
     char spellCharges;
 };

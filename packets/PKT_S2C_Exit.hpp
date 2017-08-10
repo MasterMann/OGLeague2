@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_Exit_s : DefaultPacket<PKT_S2C_Exit>
 {
-    unsigned int cid;
+    uint32_t cid;
 };
 #pragma pack(pop)
 

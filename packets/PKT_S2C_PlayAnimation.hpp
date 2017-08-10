@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_PlayAnimation_s : DefaultPacket<PKT_S2C_PlayAnimation>
 {
-    unsigned int flags;
+    uint32_t flags;
     float scaleTime;
     char animationName[64];
 };

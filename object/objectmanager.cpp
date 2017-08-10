@@ -96,7 +96,7 @@ GameObject *ObjectManager::CreateWorldObject(string loadName)
         string name; //String identifier in loadName
         string obj;  //Object class name
         bool client; //Client only
-    } objs[] = {
+    } objNameMap[] = {
         {"Spawn_Barracks",  "ObjBarracks",          0},
         {"__Spawn_",        "ObjSpawnPoint",		0},
         {"__LevelSize_",    "ObjLevelSizer",		0},
@@ -108,18 +108,13 @@ GameObject *ObjectManager::CreateWorldObject(string loadName)
         {"Lake",            "ObjLake",              1},
         {"__NAV_",          "ObjNavPoint",          0}
     };
-    for(auto o : objs)
+    for(auto objName : objNameMap)
     {
-        if(strstr(loadName.c_str(), o.name.c_str())!=0)
+        if(strstr(loadName.c_str(), objName.name.c_str())!=0)
         {
-            if(o.client)
+            if(objName.client)
                 return nullptr;
-            r3dPoint3D pos;
-            pos.x = 0;
-            pos.y = 0;
-            pos.z = 0;
-            GameObject* obj = CreateGameObject(o.obj, loadName, pos, 64, 0);
-            return obj;
+            return CreateGameObject(objName.obj, loadName, {0, 0, 0}, 64, 0);
         }
     }
     return nullptr;

@@ -13,5 +13,6 @@ HEADERS += \
     $$PWD/wink.hpp \
     $$PWD/blowfish.hpp \
     $$PWD/crc32.hpp \
-    $$PWD/stringutils.hpp
+    $$PWD/stringutils.hpp \
+    $$PWD/signal.hpp
 

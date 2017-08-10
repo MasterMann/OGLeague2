@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_OnReplication_Acc_s : DefaultPacket<PKT_OnReplication_Acc>
 {
-    unsigned int syncID;
+    uint32_t syncID;
 };
 #pragma pack(pop)
 

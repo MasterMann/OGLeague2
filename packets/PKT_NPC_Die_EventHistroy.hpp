@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_Die_EventHistroy_s : DefaultPacket<PKT_NPC_Die_EventHistroy>
 {
-    unsigned int killerNetID;
+    uint32_t killerNetID;
     float timeWindow;
     int32_t killerEventSourceType : 4;
 };

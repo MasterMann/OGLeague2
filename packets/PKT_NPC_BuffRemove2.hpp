@@ -6,7 +6,7 @@
 struct PKT_NPC_BuffRemove2_s : DefaultPacket<PKT_NPC_BuffRemove2>
 {
     char buffSlot;
-    unsigned int buffNameHash;
+    uint32_t buffNameHash;
 };
 #pragma pack(pop)
 

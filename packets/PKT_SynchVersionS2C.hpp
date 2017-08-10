@@ -7,7 +7,7 @@ struct PKT_SynchVersionS2C_s
         : DefaultPacket<PKT_SynchVersionS2C, CHANNEL_GENERIC_APP_BROADCAST>
 {
     int8_t mIsVersionOk;
-    int mMapToLoad;
+    int32_t mMapToLoad;
     PlayerLiteInfo playerInfo[12];
     char mVersionString[256];
     char mMapMode[128];

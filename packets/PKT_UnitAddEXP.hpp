@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_UnitAddEXP_s : DefaultPacket<PKT_UnitAddEXP>
 {
-    unsigned int targetNetID;
+    uint32_t targetNetID;
     float exp;
 };
 #pragma pack(pop)

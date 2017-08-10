@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_MessageToClient_s : DefaultPacket<PKT_NPC_MessageToClient>
 {
-    unsigned int targetNetID;
+    uint32_t targetNetID;
     float bubbleDelay;
     int slotNum;
     char isError;

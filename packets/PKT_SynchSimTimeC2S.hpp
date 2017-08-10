@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_SynchSimTimeC2S_s : DefaultPacket<PKT_SynchSimTimeC2S>
 {
-    unsigned int clientNetID;
+    uint32_t clientNetID;
     float time_LastServer;
     float time_LastClient;
 };

@@ -7,11 +7,11 @@ struct PKT_S2C_TeamSurrenderVote_s : DefaultPacket<PKT_S2C_TeamSurrenderVote>
 {
     int8_t vote : 1;
     int8_t firstVote : 1;
-    unsigned int playerNetworkID;
+    uint32_t playerNetworkID;
     char forVote;
     char againstVote;
     char numPlayers;
-    int team;
+    int32_t team;
     float timeOut;
 };
 #pragma pack(pop)

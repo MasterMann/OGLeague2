@@ -6,7 +6,7 @@
 struct PKT_S2C_AddDebugCircle_s : DefaultPacket<PKT_S2C_AddDebugCircle>
 {
     int id;
-    unsigned int unitNetworkID;
+    uint32_t unitNetworkID;
     r3dPoint3D center;
     float radius;
     r3dColor color;

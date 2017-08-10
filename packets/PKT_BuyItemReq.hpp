@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_BuyItemReq_s : DefaultPacket<PKT_BuyItemReq>
 {
-    unsigned int itemID;
+    uint32_t itemID;
 };
 #pragma pack(pop)
 

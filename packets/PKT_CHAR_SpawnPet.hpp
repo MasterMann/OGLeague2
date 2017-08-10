@@ -5,18 +5,18 @@
 #pragma pack(push, 1)
 struct PKT_CHAR_SpawnPet_s : DefaultPacket<PKT_CHAR_SpawnPet>
 {
-  unsigned int netObjID;
+  uint32_t netObjID;
   char netNodeID;
   r3dPoint3D pos;
-  int castSpellLevelPlusOne;
+  int32_t castSpellLevelPlusOne;
   float duration;
-  int DamageBonus;
-  int HealthBonus;
+  int32_t DamageBonus;
+  int32_t HealthBonus;
   char name[32];
   char skin[32];
-  int skinID;
+  int32_t skinID;
   char buffName[64];
-  unsigned int cloneID;
+  uint32_t cloneID;
   int8_t copyInventory : 1;
   char aiscript[32];
 };

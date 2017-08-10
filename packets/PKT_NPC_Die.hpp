@@ -6,7 +6,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_Die_s : DefaultPacket<PKT_NPC_Die>
 {
-    unsigned int killerNetID;
+    uint32_t killerNetID;
     DamageInfo info;
     float DeathDuration;
     bool becomeZombie;

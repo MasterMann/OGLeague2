@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_CreateNeutral_s : DefaultPacket<PKT_S2C_CreateNeutral>
 {
-    unsigned int netObjID;
+    uint32_t netObjID;
     char netNodeID;
     r3dPoint3D pos;
     r3dPoint3D groupPos;
@@ -13,11 +13,11 @@ struct PKT_S2C_CreateNeutral_s : DefaultPacket<PKT_S2C_CreateNeutral>
     char Name[64];
     char SkinName[64];
     char UniqueName[64];
-    int Team;
-    int DamageBonus;
-    int HealthBonus;
-    int RoamState;
-    int GroupNumber;
+    int32_t Team;
+    int32_t DamageBonus;
+    int32_t HealthBonus;
+    int32_t RoamState;
+    int32_t GroupNumber;
     int16_t CampLevel;
 };
 #pragma pack(pop)

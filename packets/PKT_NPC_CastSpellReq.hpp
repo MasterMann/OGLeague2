@@ -9,7 +9,7 @@ struct PKT_NPC_CastSpellReq_s : DefaultPacket<PKT_NPC_CastSpellReq>
     int8_t slot : 7;
     r3dPoint3D pos;
     r3dPoint3D endPos;
-    unsigned int targetNetID;
+    uint32_t targetNetID;
 };
 #pragma pack(pop)
 

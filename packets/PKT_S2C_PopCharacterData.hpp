@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_PopCharacterData_s : DefaultPacket<PKT_S2C_PopCharacterData>
 {
-    unsigned int id;
+    uint32_t id;
 };
 #pragma pack(pop)
 

@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_CreateTurret_s : DefaultPacket<PKT_S2C_CreateTurret>
 {
-    unsigned int netObjID;
+    uint32_t netObjID;
     char netNodeID;
     char Name[64];
 };

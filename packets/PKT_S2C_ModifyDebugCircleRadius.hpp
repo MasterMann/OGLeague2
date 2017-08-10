@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_ModifyDebugCircleRadius_s : DefaultPacket<PKT_S2C_ModifyDebugCircleRadius>
 {
-    int id;
+    int32_t id;
     float radius;
 };
 #pragma pack(pop)

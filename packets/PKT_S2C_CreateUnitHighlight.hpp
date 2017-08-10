@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_CreateUnitHighlight_s : DefaultPacket<PKT_S2C_CreateUnitHighlight>
 {
-    unsigned int unitNetworkID;
+    uint32_t unitNetworkID;
 };
 #pragma pack(pop)
 

@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_S2C_ChangeCharacterData_s : DefaultPacket<PKT_S2C_ChangeCharacterData>
 {
-    unsigned int id;
+    uint32_t id;
     bool useSpells;
     char skinName[64];
 };

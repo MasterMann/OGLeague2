@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_NPC_BuffRemoveGroup_s : DefaultPacket<PKT_NPC_BuffRemoveGroup>
 {
-    unsigned int buffNameHash;
+    uint32_t buffNameHash;
     char numInGroup;
 };
 #pragma pack(pop)

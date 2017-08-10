@@ -6,8 +6,8 @@
 struct PKT_S2C_MapPing_s : DefaultPacket<PKT_S2C_MapPing>
 {
     r3dPoint3D pos;
-    unsigned int target;
-    unsigned int src;
+    uint32_t target;
+    uint32_t src;
     int8_t bPlayAudio : 1;
     int8_t bShowChat : 1;
 };

@@ -5,8 +5,8 @@
 #pragma pack(push, 1)
 struct PKT_UnitAddGold_s : DefaultPacket<PKT_UnitAddGold>
 {
-    unsigned int targetNetID;
-    unsigned int sourceNetID;
+    uint32_t targetNetID;
+    uint32_t sourceNetID;
     float gold;
 };
 #pragma pack(pop)

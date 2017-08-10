@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_Building_Die_s : DefaultPacket<PKT_Building_Die>
 {
-    unsigned int mAttacker;
+    uint32_t mAttacker;
 };
 #pragma pack(pop)
 

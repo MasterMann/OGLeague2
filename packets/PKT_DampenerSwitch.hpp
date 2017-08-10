@@ -6,7 +6,7 @@
 struct PKT_DampenerSwitch_s : DefaultPacket<PKT_DampenerSwitch>
 {
     uint32_t newState;
-    unsigned int duration;
+    uint32_t duration;
 };
 #pragma pack(pop)
 

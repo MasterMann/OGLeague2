@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_FX_Kill_s : DefaultPacket<PKT_FX_Kill>
 {
-    unsigned int netID;
+    uint32_t netID;
 };
 #pragma pack(pop)
 

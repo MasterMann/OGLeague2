@@ -5,7 +5,7 @@
 #pragma pack(push, 1)
 struct PKT_OnReplication_s : DefaultPacket<PKT_OnReplication>
 {
-    unsigned int syncID;
+    uint32_t syncID;
     char count;
 };
 #pragma pack(pop)
@@ -14,7 +14,7 @@ struct PKT_OnReplication_s : DefaultPacket<PKT_OnReplication>
 struct RepHeader
 {
   uint8_t setMaps;
-  unsigned int networkID;
+  uint32_t networkID;
 };
 #pragma pack(pop)
 

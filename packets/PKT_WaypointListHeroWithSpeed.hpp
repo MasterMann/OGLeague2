@@ -6,7 +6,7 @@
 #pragma pack(push, 1)
 struct PKT_WaypointListHeroWithSpeed_s : DefaultPacket<PKT_WaypointListHeroWithSpeed>
 {
-    int syncID;
+    int32_t syncID;
     SpeedParms speedParams;
 };
 #pragma pack(pop)

@@ -6,7 +6,7 @@
 struct PKT_S2C_AnimatedBuildingSetCurrentSkin_s : DefaultPacket<PKT_S2C_AnimatedBuildingSetCurrentSkin>
 {
     char team;
-    unsigned int skinID;
+    uint32_t skinID;
 };
 #pragma pack(pop)
 
