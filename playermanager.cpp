@@ -110,6 +110,12 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_ClientReady_s *pkt, size_t size
             < (float) 26.0f < (float) 280.0f    //x y
             < (float) 26.0f < (float) 280.0f;   //x y
     pWorld->notify->sendStream(cid, ans2);
+
+    pWorld->timemanager->startGameTime();
+
+    PKT_SynchSimTimeS2C_s res;
+    res.synchtime = pWorld->timemanager->gameTime();
+    pWorld->notify->sendPacket(cid, res);
 }
 
 void PlayerManager::Handle(uint32_t cid, PKT_C2S_MapPing_s *pkt, size_t size)
@@ -121,6 +127,23 @@ void PlayerManager::Handle(uint32_t cid, PKT_C2S_MapPing_s *pkt, size_t size)
     ans.bPlayAudio = 1;
     ans.bShowChat = 1;
     pWorld->notify->sendPacket(cid, ans);
+}
+
+void PlayerManager::Handle(uint32_t cid, PKT_SynchSimTimeC2S_s *pkt, size_t size)
+{
+    PKT_SynchSimTimeS2C_s res;
+    res.synchtime = pWorld->timemanager->gameTime();
+    pWorld->notify->sendPacket(cid, res);
+}
+
+void PlayerManager::Handle(uint32_t cid, PKT_CHAT_s *pkt, size_t size)
+{
+    std::cout << "Chat: "<<size<<" vs "<<sizeof(PKT_CHAT_s)<<std::endl;
+}
+
+void PlayerManager::Handle(uint32_t cid, EGP_Chat_s *pkt, size_t size)
+{
+    std::cout << "Chat: "<<size<<" vs "<<sizeof(PKT_CHAT_s)<<std::endl;
 }
 
 void PlayerManager::UpdateRoster(EGP_TeamRosterUpdate_s update)

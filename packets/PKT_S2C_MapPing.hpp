@@ -3,7 +3,7 @@
 #include "base.hpp"
 
 #pragma pack(push, 1)
-struct PKT_S2C_MapPing_s : DefaultPacket<PKT_S2C_MapPing>
+struct PKT_S2C_MapPing_s : DefaultPacket<PKT_S2C_MapPing, CHANNEL_GENERIC_APP_BROADCAST>
 {
     r3dPoint3D pos;
     uint32_t target;
